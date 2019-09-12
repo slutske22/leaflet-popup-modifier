@@ -24,7 +24,7 @@ script but before your personal script:
 
       <!-- Leaflet Popup Modifier -->
       <script src="js/popupMod.js" type="text/javascript"></script>
-
+      <link rel="stylesheet" href="css/popupMod.css">
 
       <!-- Personal style and script file links -->
       <link rel="stylesheet" href="css/style.css">
