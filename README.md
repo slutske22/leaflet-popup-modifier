@@ -75,3 +75,6 @@ var popup = L.popup({editable: true})
 
 ## Planned improvements:
 Currently the removal button says "Remove this marker," but not every popup originates from a marker.  Plans to change the word 'marker' to 'circle,' 'polygon,' 'line,' etc., automatically based on the source type in the works.
+
+## License
+GNU GENERAL PUBLIC LICENSE Version 3
