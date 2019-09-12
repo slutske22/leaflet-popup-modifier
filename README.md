@@ -1,6 +1,8 @@
 # Leaflet Popup Modifier
 A small plugin for leaflet which allows the author to apply removable or editable options to a popup
 
+![](lealet-popupMod-gif.gif)
+
 ## Installation
 Just download the .js and .css files and include them in your project.  The .js file must come after your leaflet 
 script but before your personal script:
