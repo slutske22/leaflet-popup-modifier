@@ -21,7 +21,7 @@ script but before your personal script:
 
 
       <!-- Personal style and script file links -->
-      <link rel="stylesheet" href="css/burn2.css">
+      <link rel="stylesheet" href="css/style.css">
       <script src="js/script.js" type="text/javascript" defer></script>
 
 </head>
