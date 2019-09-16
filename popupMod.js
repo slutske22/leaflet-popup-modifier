@@ -39,8 +39,6 @@ L.Popup.include({
       //  ----------------    Source code  ---------------------------- //
 
 
-
-
       //  ---------------    My additions  --------------------------- //
 
       if (this.options.removable && !this.options.editable){
@@ -72,20 +70,10 @@ L.Popup.include({
          editButton.innerHTML = 'Edit';
          this.options.minWidth = 160;
 
-
          L.DomEvent.on(removeButton, 'click', this._onRemoveButtonClick, this);
          L.DomEvent.on(editButton, 'click', this._onEditButtonClick, this);
-
-
       }
-
-
-
-
-
-
    },
-
 
    _onRemoveButtonClick: function (e) {
       this._source.remove();
@@ -123,24 +111,13 @@ L.Popup.include({
             && thisStandIn._inputFieldWidth + 5 < inputFieldDiv.clientWidth){
             ruler.innerHTML = inputField.innerHTML;
 
-            // console.clear();
-            // console.log(`Text width: ${ruler.offsetWidth}`);
-            // console.log(`InputField width: ${inputFieldDiv.clientWidth}`);
-            // console.log(`Popup width: ${thisStandIn._container.offsetWidth}`);
-
             if (ruler.offsetWidth + 20 > inputFieldDiv.clientWidth){
                console.log('expand now');
                inputField.style.width = thisStandIn._inputField.style.width = ruler.offsetWidth + 10 + 'px';
                thisStandIn.update();
             }
-
          }
       }, false)
-
-
-      // https://blog.mastykarz.nl/measuring-the-length-of-a-string-in-pixels-using-javascript/
-      //  ----------------------------------------------------- ------- //
-
 
 
       var inputActions = this._inputActions = L.DomUtil.create('div', 'leaflet-popup-input-actions', editScreen);
@@ -153,7 +130,6 @@ L.Popup.include({
 
       L.DomEvent.on(cancelButton, 'click', this._onCancelButtonClick, this)
       L.DomEvent.on(saveButton, 'click', this._onSaveButtonClick, this)
-
 
       this.update();
       L.DomEvent.stop(e);
@@ -184,8 +160,8 @@ L.Popup.include({
       this.update();
       L.DomEvent.stop(e);
 
+      //  ---------------------End my additions --------------------------------------- //
 
 
    }
-
 })
