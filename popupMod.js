@@ -1,12 +1,20 @@
+// Adding nametag labels to all popup-able leaflet layers
+const sourceTypes = ['Layer','Circle','CircleMarker','Marker','Polyline','Polygon','ImageOverlay','VideoOverlay','SVGOverlay','Rectangle','LayerGroup','FeatureGroup','GeoJSON']
+
+sourceTypes.forEach( type => {
+   L[type].include({
+      nametag: type.toLowerCase()
+   })
+})
+
 //  Adding new options to the default options of a popup
 L.Popup.mergeOptions({
    removable: false,
-   editable: false
+   editable: false,
 })
 
 // Modifying the popup mechanics
 L.Popup.include({
-
 
    // modifying the _initLayout method to include edit and remove buttons, if those options are enabled
 
@@ -41,11 +49,13 @@ L.Popup.include({
 
       //  ---------------    My additions  --------------------------- //
 
+      var nametag = this.options.nametag ? this.options.nametag : this._source.nametag;
+
       if (this.options.removable && !this.options.editable){
          var userActionButtons = this._userActionButtons = L.DomUtil.create('div', prefix + '-useraction-buttons', wrapper);
          var removeButton = this._removeButton = L.DomUtil.create('a', prefix + '-remove-button', userActionButtons);
          removeButton.href = '#close';
-         removeButton.innerHTML = 'Remove this marker';
+         removeButton.innerHTML = `Remove this ${nametag}`;
          this.options.minWidth = 110;
 
          L.DomEvent.on(removeButton, 'click', this._onRemoveButtonClick, this);
@@ -64,7 +74,7 @@ L.Popup.include({
          var userActionButtons = this._userActionButtons = L.DomUtil.create('div', prefix + '-useraction-buttons', wrapper);
          var removeButton = this._removeButton = L.DomUtil.create('a', prefix + '-remove-button', userActionButtons);
          removeButton.href = '#close';
-         removeButton.innerHTML = 'Remove this marker';
+         removeButton.innerHTML = `Remove this ${nametag}`;
          var editButton = this._editButton = L.DomUtil.create('a', prefix + '-edit-button', userActionButtons);
          editButton.href = '#edit';
          editButton.innerHTML = 'Edit';
