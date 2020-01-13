@@ -7,13 +7,18 @@ A small plugin for leaflet which allows the author to apply removable or editabl
 </p>
 
 
+## Demo
+
+Check out [this codesandbox](https://codesandbox.io/s/leaflet-popup-modifier-kbuwd) for examples with explanations.
+
+
 ## Installation
-Just download the .js and .css files and include them in your project.  The .js file must come after your leaflet 
+Just download the .js and .css files and include them in your project.  The .js file must come after your leaflet
 script but before your personal script:
 
 ```html
 <head>
-  
+
       <!-- Load Leaflet from CDN -->
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
       integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -71,10 +76,14 @@ var popup = L.popup({editable: true})
     .openOn(leafletMap);
 ```
 
+Removable popups will automatically render their "Remove this {thing}" link with {thing} as the same name as the leaflet element that the popup originates from.  For example, a marker's popup will say "Remove this marker," a polygon's popup will say "Remove this polygon," etc.  The author can change this by specifying `nametag` in the options, like so:
 
-
-## Planned improvements:
-Currently the removal button says "Remove this marker," but not every popup originates from a marker.  Plans to change the word 'marker' to 'circle,' 'polygon,' 'line,' etc., automatically based on the source type in the works.
+```javascript
+var myMarker =  L.marker( [33.270, -116.650], {icon: seaMonster} );
+myMarker
+   .bindPopup( "Center Marker" , {removable: true, editable: true, nametag: 'Sea Monster'} )
+   .addTo(leafletMap)
+```
 
 ## License
 GNU GENERAL PUBLIC LICENSE Version 3
