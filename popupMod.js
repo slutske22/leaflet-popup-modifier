@@ -49,7 +49,15 @@ L.Popup.include({
 
       //  ---------------    My additions  --------------------------- //
 
-      var nametag = this.options.nametag ? this.options.nametag : this._source.nametag;
+      var nametag
+
+      if (this.options.nametag){
+         nametag = this.options.nametag
+      } else if (this._source) {
+         nametag =  this._source.nametag
+      } else {
+         nametag = "popup"
+      }
 
       if (this.options.removable && !this.options.editable){
          var userActionButtons = this._userActionButtons = L.DomUtil.create('div', prefix + '-useraction-buttons', wrapper);
