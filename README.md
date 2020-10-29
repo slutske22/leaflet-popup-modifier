@@ -76,6 +76,8 @@ var popup = L.popup({editable: true})
     .openOn(leafletMap);
 ```
 
+### Using a `nametag`
+
 Removable popups will automatically render their "Remove this {thing}" link with {thing} as the same name as the leaflet element that the popup originates from.  For example, a marker's popup will say "Remove this marker," a polygon's popup will say "Remove this polygon," etc.  The author can change this by specifying `nametag` in the options, like so:
 
 ```javascript
@@ -84,6 +86,16 @@ myMarker
    .bindPopup( "Center Marker" , {removable: true, editable: true, nametag: 'Sea Monster'} )
    .addTo(leafletMap)
 ```
+
+### Capturing the event
+
+Removing a popup's source will trigger a `removeMarker` event on the `document`, which you can capture.  The removed source is available in `event.detail`.
+
+````
+document.addEventListener("removeMarker", (e) => {
+  console.log(e);
+});
+````
 
 ## License
 GNU GENERAL PUBLIC LICENSE Version 3
