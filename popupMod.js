@@ -96,6 +96,12 @@ L.Popup.include({
    _onRemoveButtonClick: function (e) {
       this._source.remove();
       L.DomEvent.stop(e);
+      var event = new CustomEvent("removeMarker", {
+        detail: {
+          marker: this._source
+        }
+      });
+      document.dispatchEvent(event);
    },
 
    _onEditButtonClick: function (e) {
